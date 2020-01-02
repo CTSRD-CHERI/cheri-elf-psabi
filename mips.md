@@ -23,7 +23,7 @@
  $c3       |          | Caller | Capability return value
  $c3-$c10  |          | Caller | Capability arguments
  $c11      | $csp     | Callee | Stack pointer
- $c12      |          | Caller | `cjalr` destination register 
+ $c12      |          | Caller | `cjalr` target register 
  $c13      |          | Caller | Pointer to on-stack arguments
  $c14-$c15 |          | Caller | Temporary registers
  $c16      |          | Caller | Exception pointer register
