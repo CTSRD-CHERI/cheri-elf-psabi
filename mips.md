@@ -32,7 +32,7 @@
  $c24      | $cfp     | Callee | Frame pointer
  $c25      | $cbp     | Callee | Stack base pointer?
  $c26      | $cgp     | Callee | Global pointer
- $c26      | $idc     | N/A    | Initial data capability for `CCall`
+ $c26      | $idc     | N/A    | Invoked data capability from `CCall`
  $c27-$c31 |          | Caller | Temporary registers
 
 # Procedure Calling Convention
