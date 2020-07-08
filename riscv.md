@@ -133,15 +133,17 @@ CHERI-RISC-V be [L64PC128D](#abi-l64pc128d) and [IL32PC64D](#abi-il32pc64d).
 CHERI-RISC-V introduces a new base C type to hold capabilities, for which there
 are two conventions.
 
-  * **LP64, LP64F, LP64D, and LP64Q**: use the following type size and
-    alignment (based on the LP64 convention):
+  * **LP64, LP64F, LP64D, LP64Q, L64PC128, L64PC128F, L64PC128D and
+    L64PC128Q**: use the following type size and alignment (based on the
+    LP64/L64PC128 convention):
 
     Type                | Size (Bytes) | Alignment (Bytes)
     --------------------|--------------|------------------
     void * __capability | 16           | 16
 
-  * **ILP32, ILP32F, ILP32D, and ILP32E**: use the following type size and
-    alignment (based on the ILP32 convention):
+  * **ILP32, ILP32F, ILP32D, ILP32E, IL32PC64, IL32PC64F, IL32PC64D,
+    IL32PC64E**: use the following type size and alignment (based on the
+    ILP32/IL32PC64 convention):
 
     Type                | Size (Bytes) | Alignment (Bytes)
     --------------------|--------------|------------------
@@ -171,7 +173,7 @@ intptr_t/uintptr_t accordingly) with two conventions.
     -------|--------------|------------------
     void * | 8            | 8
 
-They are otherwise identical to their LP64/ILP32 counterparts.
+They are otherwise identical to their LP64\*/ILP32\* counterparts.
 
 For large objects, additional padding and alignment requirements may be
 introduced to ensure that capabilities referring to the object can be
