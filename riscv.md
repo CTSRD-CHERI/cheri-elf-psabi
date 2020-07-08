@@ -441,29 +441,29 @@ corresponding `__start___cap_relocs` and `__stop___cap_relocs` symbols. Each
 entry is of the following type:
 
 ```
-struct capreloc {
-    unsigned long location;
-    unsigned long base;
-    unsigned long offset;
-    unsigned long length;
-    unsigned long flags;
-};
+typedef struct {
+    unsigned long cr_location;
+    unsigned long cr_base;
+    unsigned long cr_offset;
+    unsigned long cr_length;
+    unsigned long cr_flags;
+} cap_reloc;
 ```
 
-* `location`: The ELF virtual address where the capability is to be stored
+* `cr_location`: The ELF virtual address where the capability is to be stored
   within this object.
 
-* `base`: The ELF virtual address of the symbol being pointed to, which will
+* `cr_base`: The ELF virtual address of the symbol being pointed to, which will
   also be within this object. This will be the base of the derived capability.
 
-* `offset`: The offset to add to the derived capability (equivalent to an ELF
-  addend).
+* `cr_offset`: The offset to add to the derived capability (equivalent to an
+  ELF addend).
 
-* `length`: The length used for the bounds of the derived capability. This will
-  be computed at link time from the size in the ELF symbol table of the
+* `cr_length`: The length used for the bounds of the derived capability. This
+  will be computed at link time from the size in the ELF symbol table of the
   symbol being pointed.
 
-* `flags`: If the most significant bit of this field is set, the capability
+* `cr_flags`: If the most significant bit of this field is set, the capability
   will be a function (executable) capability, otherwise the capability will be
   a data (non-executable) capability. In the case of data capabilities, if the
   second most significant bit is set, the capability is for read only data and
@@ -471,7 +471,7 @@ struct capreloc {
   stores. All other bits are reserved.
 
 Note that, being ELF virtual addresses, the base load address of the object
-must be added to `location` and `base` in order to calculate the absolute
+must be added to `cr_location` and `cr_base` in order to calculate the absolute
 address at run time.
 
 ## <a name=section-alignment></a> Section Alignment
