@@ -333,9 +333,9 @@ modifiers, with the emitted relocations in comments:
 ```
     lui         a5, %tprel_hi(symbol)                   # R_RISCV_TPREL_HI20 (symbol)
     cincoffset  ca5, ctp, a5, %tprel_cincoffset(symbol) # R_RISCV_TPREL_CINCOFFSET (symbol)
-    clw         t0, %tprel_lo(symbol)(ca5)
+    clw         t0, %tprel_lo(symbol)(ca5)              # R_RISCV_TPREL_LO12_I (symbol)
     addi        t0, t0, 1
-    csw         t0, %tprel_lo(symbol)(ca5)
+    csw         t0, %tprel_lo(symbol)(ca5)              # R_RISCV_TPREL_LO12_S (symbol)
 ```
 
 The `%tprel_cincoffset` assembly modifier does not return a value and is used
