@@ -299,8 +299,7 @@ to provide a two-instruction PCC-relative call equivalent to the `call`
 pseudoinstruction in the base ABIs.
 
 Thus, all procedure calls currently amount to a load from the capability table
-as defined in the previous section followed by an indirect capability jump and
-link:
+as defined above followed by an indirect capability jump and link:
 
 ```
     clgc        ct0, symbol
