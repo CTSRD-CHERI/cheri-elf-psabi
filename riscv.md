@@ -410,8 +410,8 @@ where the type `tls_index` is defined as:
 
 ```
 typedef struct {
-    unsigned long int ti_module;
-    unsigned long int ti_offset;
+    unsigned long ti_module;
+    unsigned long ti_offset;
 } tls_index;
 ```
 
