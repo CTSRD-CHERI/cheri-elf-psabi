@@ -183,7 +183,7 @@ ISAv7] for details of the restrictions.
 
 ## <a name=file-header></a> File Header
 
-* e_flags: The ffollowing new flags are defined.
+* e_flags: The following new flags are defined.
 
   * EF_RISCV_CHERIABI (0x00010000): This bit is set when the binary targets the
     pure capability ABIs defined by this specification.
