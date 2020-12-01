@@ -179,7 +179,7 @@ For large objects, additional padding and alignment requirements may be
 introduced to ensure that capabilities referring to the object can be
 represented precisely, as capability compression means the available precision
 for bounds decreases as the object size increases above a threshold. See [CHERI
-ISAv7] for details of the restrictions.
+ISAv8] for details of the restrictions.
 
 # <a name=elf-object-files></a> ELF Object Files
 
@@ -190,7 +190,7 @@ ISAv7] for details of the restrictions.
   * EF_RISCV_CHERIABI (0x00010000): This bit is set when the binary targets the
     pure capability ABIs defined by this specification.
   * EF_RISCV_CAP_MODE (0x00020000): This bit is set when the binary requires
-    its instructions be decoded in _capability mode_ (see [CHERI ISAv7]).
+    its instructions be decoded in _capability mode_ (see [CHERI ISAv8]).
     Currently this bit will be set if and only if a pure capability ABI is in
     use due to ISA and code generation restrictions, but future ISA revisions
     may provide enough support to allow the two to be independent.
@@ -479,9 +479,9 @@ address at run time.
 
 Loadable segments in executables and shared objects should be aligned and
 padded to ensure that systems software can generate capabilities for each
-segment that do not overlap with other loadable segments. See [CHERI ISAv7] for
+segment that do not overlap with other loadable segments. See [CHERI ISAv8] for
 the specification of the capability compression in use and the alignment
 requirements the format imposes to ensure representable non-overlapping bounds.
 
-[CHERI ISAv7]: https://www.cl.cam.ac.uk/techreports/UCAM-CL-TR-927.pdf
+[CHERI ISAv8]: https://www.cl.cam.ac.uk/techreports/UCAM-CL-TR-951.pdf
 [RISC-V ELF psABI specification]: https://github.com/riscv/riscv-elf-psabi-doc
