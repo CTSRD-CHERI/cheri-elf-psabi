@@ -17,6 +17,7 @@ assumed to be as specified by that base document.
 	* [File Header](#file-header)
 	* [Relocations](#relocations)
 	* [Thread Local Storage](#thread-local-storage)
+	* [Program Header Table](#program-headers)
 	* [Dynamic Table](#dynamic-table)
 	* [Capability Relocations Section](#capability-relocations-section)
 	* [Section Alignment](#section-alignment)
@@ -415,6 +416,44 @@ typedef struct {
     unsigned long ti_offset;
 } tls_index;
 ```
+
+## <a name=program-headers></a> Program Header Table
+
+The following table lists additional processor-specific segment types:
+
+Name                      | Value      | Description
+--------------------------|------------|-------------------------------------
+PT\_RISCV\_MEMTAG\_CHERI  | 0x7fffffff | Capability memory tags
+
+`PT_RISCV_MEMTAG_CHERI` segments (if present) hold capability memory tags
+for a particular memory range. They are defined for core dump files of
+type `ET_CORE`.  The program header for these segments is defined as:
+
+* `p_type`: `PT_RISCV_MEMTAG_CHERI`
+
+* `p_flags`: bitmask of capability tag MMU permissions
+
+* `p_offset`: segment file offset
+
+* `p_vaddr`: segment virtual address, must be page-aligned
+
+* `p_paddr`: 0
+
+* `p_filesz`: segment size in file, calculated as `p_memsz / (8 *
+  sizeof(void * __capability)` (eight 1-bit tags cover 8 capabilities of
+  memory)
+
+* `p_memsz`: segment size in memory, must be a multiple of the page size
+
+* `p_align`: 0
+
+The tags are stored in the core file at `p_offset` as eight 1-bit tags
+in a byte. With a capability size of 16 bytes, a 4K page requires 32
+bytes in the core file.
+
+``p_flags`` contains `PF_R` if the segment's MMU permissions permit reading
+capability tags and `PF_W` if the segment's MMU permissions permit writing
+capability tags.
 
 ## <a name=dynamic-table></a> Dynamic Table
 
