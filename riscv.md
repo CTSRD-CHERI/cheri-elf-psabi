@@ -350,19 +350,17 @@ Example assembly load, increment and store of a thread local variable `symbol`
 using the `cla.tls.ie` pseudoinstruction:
 
 ```
-    cla.tls.ie  a0, symbol, ca0
+    cla.tls.ie  a0, symbol
     cincoffset  ca0, ctp, a0
     clw         t0, 0(ca0)
     addi        t0, t0, 1
     csw         t0, 0(ca0)
 ```
 
-Note that, unlike RISC-V's `la.tls.ie`, CHERI-RISC-V's `cla.tls.ie` takes a
-temporary capability register as an additional argument. The assembly
-pseudoinstruction:
+The assembly pseudoinstruction:
 
 ```
-    cla.tls.ie  a0, symbol, ca0
+    cla.tls.ie  a0, symbol
 ```
 
 expands to the following assembly instructions and relocations:
